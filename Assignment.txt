@@ -1,0 +1,64 @@
+Create Table MovieReview(
+ReviewID INT Primary Key,
+MovieName VARCHAR(100) NOT NULL,	
+Hero VARCHAR(100),
+Heroine VARCHAR(100),
+Review VARCHAR(1000) NOT NULL
+);
+GO
+INSERT INTO MovieReview Values
+('1', 'Eraser', 'Arnold','Vanessa','Vanessa does not have mucha role in movie, but Arnold did a good job'),
+('2', 'Titanic', 'Leonardo','Kate', 'Initially I felt Kate might look older than hero but after watching I did not feel the same'),
+('3', 'Zootopia', 'Ginnifer','Jason', 'Animation and screen play was good, not many 3D effects')
+
+Select * from MovieReview;
+
+Select MovieName
+From MovieReview
+Where Review LIKE concat('%',Hero,'%') and 
+	Review LIKE concat('%', Heroine,'%');
+
+
+
+Create Table Person(
+PersonID INT NOT NULL PRIMARY KEY,
+PersonName VARCHAR(50),
+YearlySalary Money,
+Gender bit,
+MaritalStatus char(1) Check ((MaritalStatus = 'M') OR (MaritalStatus = 'S') OR (MaritalStatus = 'W'))
+);
+
+
+
+
+Create Table Provider(
+ProviderId INT NOT NULL PRIMARY KEY,
+ProviderName VARCHAR(100),
+ProviderSpeciality VARCHAR(100),
+DOB Date,
+Gender bit,
+AddressID INT,
+PhoneNumber INT Check (len(PhoneNumber) <= 10)
+Foreign KEY(AddressID) References Address(AddressID)
+);
+
+
+Create Table Address(
+AddressID INT NOT NULL PRIMARY KEY,
+Street VARCHAR(50),
+StreetType VARCHAR(25),
+StreetNumber INT,
+StreetDirection VARCHAR(25),
+City VARCHAR(25),
+State VARCHAR(20),
+Zip VARCHAR(20)
+);
+
+Create Table Person(
+PersonId INT NOT NULL,
+Name VARCHAR(50),
+Gender bit,
+ZIP	VARCHAR(20),
+Description VARCHAR(100),
+Constraint Pk_Person PRIMARY KEY (PersonId)
+);
