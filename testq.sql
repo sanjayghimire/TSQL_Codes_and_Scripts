@@ -1,5 +1,0 @@
-/*Write a Dynamic SQL query that returns a list of all employees, along with:Their full nameTheir job titleTheir email address (if any)The user should be able to filter by department name (optional input).If no department name is provided, return results from all departments. Select * FromSelect * From HumanResources.Employee Select * From Person.PersonSelect * From Person.EmailAddressSelect * From HumanResources.EmployeeDepartmentHistorySelect * From HumanResources.Department*/Declare @Dept NVARCHAR(50);Declare @Sql NVARCHAR(MAX);Set @Dept = '';Set @Sql = 'Select CONCAT(P.FirstName, '' '', ISNULL(P.MiddleName + '' '', ''''), P.LastName) AS FullName, pe.EmailAddress, HE.JobTitle, d.NameFrom Person.Person P  Left Join Person.EmailAddress PE ON P.BusinessEntityID = PE.BusinessEntityIDInner JOin HumanResources.Employee HEon p.BusinessEntityID = HE.BusinessEntityIDInner JOIN HumanResources.EmployeeDepartmentHistory EDHon HE.BusinessEntityID = EDH.BusinessEntityIDInner JOIN HumanResources.Department DON EDH.DepartmentID = D.DepartmentIDwhere (''' + @Dept + ''' = '''' OR D.Name = ''' + @Dept + ''')
-';
-
-
-Exec(@Sql)
