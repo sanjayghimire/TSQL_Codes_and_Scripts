@@ -138,7 +138,7 @@ ManagerID int NULL,
 );  
 -- Populate the table with values.  
 INSERT INTO dbo.MyEmployees VALUES   
- (1, N'Ken', N'Sánchez', N'Chief Executive Officer',16,NULL)  
+ (1, N'Ken', N'SÃ¡nchez', N'Chief Executive Officer',16,NULL)  
 ,(273, N'Brian', N'Welcker', N'Vice President of Sales',3,1)  
 ,(274, N'Stephen', N'Jiang', N'North American Sales Manager',3,273)  
 ,(275, N'Michael', N'Blythe', N'Sales Representative',3,274)  
